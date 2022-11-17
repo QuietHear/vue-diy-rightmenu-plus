@@ -1,0 +1,31 @@
+{
+  "name": "vue-diy-rightmenu-plus",
+  "description": "vue3版 自定义右键菜单",
+  "version": "0.0.1",
+  "author": "aFei <1106728884@qq.com>",
+  "license": "MIT",
+  "main": "dist/vue-diy-rightmenu-plus.umd.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-diy-rightmenu-plus.mjs",
+      "require": "./dist/vue-diy-rightmenu-plus.umd.js"
+    },
+    "./index.css": "./dist/style.css"
+  },
+  "private": false,
+  "scripts": {
+    "build": "vite build"
+  },
+  "keywords": [
+    "Vue3",
+    "diyRightMenu"
+  ],
+  "homepage": "https://github.com/QuietHear",
+  "repository": "https://github.com/QuietHear/vue-diy-rightmenu-plus",
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^3.2.0",
+    "sass": "^1.53.0",
+    "vite": "^3.2.3",
+    "vue": "^3.2.41"
+  }
+}
