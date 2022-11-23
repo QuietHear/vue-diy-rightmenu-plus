@@ -12,71 +12,38 @@
 	app.use(vueDiyRightmenuPlus);
 
 
+## 0. 可改动样式变量
+* `--menu-height`：30px;-->按钮的高度
+
+* `--menu-width`：80px;-->按钮的宽度
+
+* `--menu-title-height`：28px;-->按钮组标题的高度
+
+
 ## 1. 参数
-* `showBtn`：是否显示点击按钮-->Boolean;非必传;默认*true*
+* `groupList`：按钮组数据-->Array;非必传;默认*[]*
 
-* `space`：抠图到图形边沿的距离-->Number;非必传;默认*10*
+* `list`：按钮数据，优先级高于groupList-->Array;非必传;默认*[{label:'编辑',value:'编辑value',icon:'el/Apple'},{label:'删除',value:'删除value'}]*
 
-* `imgList`：资源图片路径集合-->Array;非必传;默认使用组件内置的10张图片
+* `props`：按钮键值配置-->Object;非必传;默认*{}*
 >
-	// 例子
-	:imgList="[url,url,url...]"
->
-
-* `getFunction`：通过接口获取初始化图片相关信息-->Function;必传
->
-	// 例子
-    const test = (obj) => {
-		// 这个地方的obj是组件内部传入，参数分别代表
-		// r:1; eg:圆弧最大半径，无用参数
-		// width1:1; eg:假数据，无用参数
-		// width2:1; eg:x方向最小值
-		// width3:1; eg:x方向最大值
-		// width4:1; eg:假数据，无用参数
-		// height1:1; eg:y方向最小值
-		// height2:1; eg:假数据，无用参数
-		// height3:1; eg:假数据，无用参数
-		// height4:1; eg:y方向最大值
-    	return new Promise((resolve) => {
-        	APIUrl(obj).then((res) => {
-				// 接口返回的数据中请包含以下信息
-				// code:''; eg:是否请求成功，只有为200才算成功
-				// data:{  eg:返回的必要值
-				//   width:1; eg:抠图x方向最终的值，需要后端或者前端存起来后面做校验，这个地方需进行加密(先平方再减64，等到的结果转换为8进制，然后使用btoa加密)
-				//   height:1; eg:假数据，建议使用obj.height2，无用参数
-				//   x:1; eg:假数据，建议使用obj.width4，需要与width相同的方法加密，无用参数
-				//   y:1; eg:抠图y方向最终的值
-				//};
-				// msg/message:''; eg:错误提示消息
-        		resolve(res);
-        	});
-    	});
-    };
+	// 配置项说明
+	name:'name' // 按钮组标题
+	data:'data' // 按钮组数据
+	label:'label' // 按钮的内容
+	value:'value' // 点击按钮的返回值
+	icon:'icon' // 点击按钮图标
+	//
+	// 按钮名分为前后两部分，用/分隔，有以下三种情况
+	// el/xxx，此时为el-icon,xxx为图标组件名
+	// iconfont/xxx，此时为iconfont，xxx为图标去掉icon-后部分
+	// xx/xx，此时为本地自定义图标，前半部分为class，后半部分为内容
 >
 
-* `setFunction`：通过接口提交校验结果-->Function;必传
->
-	// 例子
-    const test = (obj) => {
-		// 这个地方的obj是组件内部传入，参数分别代表
-		// x:''; eg:加密后的移动距离，需要解密（btoa先解密，再将4进制转换为10进制，然后加16再开方）
-		// time:1; eg:移动花费的时间
-    	return new Promise((resolve) => {
-        	APIUrl(obj).then((res) => {
-				// 接口返回的数据中请包含以下信息
-				// code:''; eg:是否请求成功，200为成功，123为拼接错误，其他为服务器错误
-				// data:{  eg:返回的必要值
-				//   percentage:1; eg:超越人数百分比，可以使用100 - Math.round((obj.time / 5) * 100)计算，允许为负数，负数代表超时，不建议把超时标准弄得太小
-				//};
-				// msg/message:''; eg:错误提示消息
-        		resolve(res);
-        	});
-    	});
-    };
->
+* `hideOnClick`：点击按钮后是否隐藏弹窗-->Boolean;非必传;默认*true*
 
-* `@change`：验证结果改变时触发返回事件-->第一个参数返回true/false
+* `@menuClick`：弹窗按钮被点击后触发返回事件-->第一个参数返回按钮的value值
 
+* `@popShow`：弹窗打开触发返回事件
 
-## 2. 方法
-* `initPop`：手动开始触发验证-->建议showBtn为false时使用
+* `@popClose`：弹窗关闭触发返回事件
