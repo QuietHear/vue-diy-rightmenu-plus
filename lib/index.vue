@@ -4,7 +4,7 @@
 */
 /*
  * @LastEditors: aFei
- * @LastEditTime: 2023-01-12 16:50:00
+ * @LastEditTime: 2023-01-13 17:42:07
 */
 <template>
   <div class="vue-diy-rightmenu-plus" @contextmenu.prevent="showMenu">
@@ -15,8 +15,9 @@
       <template v-if="list.length > 0">
         <div class="menu-list">
           <div class="item" @click="menuClick(item[nameSet.value])" v-for="(item, index) in list" :key="index">
-            <template v-if="item[nameSet.icon]">
-              <el-icon v-if="item[nameSet.icon].split('/')[0] === 'el'">
+            <template v-if="item[nameSet.customIcon] || item[nameSet.icon]">
+              <component :is="item[nameSet.customIcon]" v-if="item[nameSet.customIcon]" />
+              <el-icon v-else-if="item[nameSet.icon].split('/')[0] === 'el'">
                 <component :is="item[nameSet.icon].split('/')[1]" />
               </el-icon>
               <i :class="[
@@ -37,8 +38,9 @@
           <p class="item-title">{{ item[nameSet.name] }}</p>
           <div class="item" @click="menuClick(one[nameSet.value])" v-for="(one, oneIndex) in item[nameSet.data]"
             :key="oneIndex">
-            <template v-if="one[nameSet.icon]">
-              <el-icon v-if="one[nameSet.icon].split('/')[0] === 'el'">
+            <template v-if="one[nameSet.customIcon] || one[nameSet.icon]">
+              <component :is="one[nameSet.customIcon]" v-if="one[nameSet.customIcon]" />
+              <el-icon v-else-if="one[nameSet.icon].split('/')[0] === 'el'">
                 <component :is="one[nameSet.icon].split('/')[1]" />
               </el-icon>
               <i :class="[
@@ -107,7 +109,8 @@ const nameSet = ref({
   data: props.props.data || "data",
   label: props.props.label || "label",
   value: props.props.value || "value",
-  icon: props.props.icon || "icon",
+  customIcon: props.props.customIcon || "customIcon",
+  icon: props.props.icon || "icon"
 });
 // 查找最近的一个符合条件的元素
 const closest = (ele, selector) => {
@@ -164,6 +167,7 @@ const menuClick = (value) => {
   console.log(value);
   emit("menuClick", value);
 };
+console.log(props.list);
 </script>
 <style lang="scss">
 @use "style/index.scss" as *;

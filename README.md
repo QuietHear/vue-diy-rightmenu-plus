@@ -22,8 +22,33 @@
 
 ## 1. 参数
 * `groupList`：按钮组数据-->Array;非必传;默认*[]*
+>
+	// 示例
+	[
+		{
+			name:'a',
+			data:[
+				{label:'编辑',value:'编辑value',icon:'el/Apple'}
+			]
+		}
+	]
+>
 
-* `list`：按钮数据，优先级高于groupList-->Array;非必传;默认*[{label:'编辑',value:'编辑value',icon:'el/Apple'},{label:'删除',value:'删除value'}]*
+* `list`：按钮数据，优先级高于groupList-->Array;非必传;默认如下
+>
+	// 默认
+	[
+        {
+          label: "编辑",
+          value: "编辑value",
+          icon: "el/Apple",
+        },
+        {
+          label: "删除",
+          value: "删除value",
+        },
+	]
+>
 
 * `props`：按钮键值配置-->Object;非必传;默认*{}*
 >
@@ -32,6 +57,7 @@
 	data:'data' // 按钮组数据
 	label:'label' // 按钮的内容
 	value:'value' // 点击按钮的返回值
+	customIcon:'customIcon' // 自定义组件，优先级高于icon
 	icon:'icon' // 点击按钮图标
 	//
 	// 按钮名分为前后两部分，用/分隔，有以下三种情况
