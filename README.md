@@ -61,8 +61,8 @@
 	icon:'icon' // 点击按钮图标
 	//
 	// 按钮名分为前后两部分，用/分隔，有以下三种情况
-	// el/xxx，此时为el-icon,xxx为图标组件名
-	// iconfont/xxx，此时为iconfont，xxx为图标去掉icon-后部分
+	// el/xxx，此时为el-icon,xxx为图标组件名（！！！未内置）
+	// iconfont/xxx，此时为iconfont，xxx为图标去掉icon-后部分（！！！未内置）
 	// xx/xx，此时为本地自定义图标，前半部分为class，后半部分为内容
 >
 
