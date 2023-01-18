@@ -43,11 +43,11 @@ const A = ["onContextmenu"], P = {
       label: i.props.label || "label",
       value: i.props.value || "value",
       icon: i.props.icon || "icon"
-    }), w = (l, x) => {
-      let d = l.matches || l.webkitMatchesSelector || l.mozMatchesSelector || l.msMatchesSelector;
-      for (; l && !d.call(l, x); )
-        l = l.parentElement;
-      return l;
+    }), w = (c, x) => {
+      let d = c.matches || c.webkitMatchesSelector || c.mozMatchesSelector || c.msMatchesSelector;
+      for (; c && !d.call(c, x); )
+        c = c.parentElement;
+      return c;
     }, L = () => {
       w(event.target, ".menu-content") === null && (k.value.left = event.clientX + "px", k.value.top = event.clientY + "px", r.value = !0, s("popShow"));
     }, f = () => {
@@ -58,16 +58,16 @@ const A = ["onContextmenu"], P = {
     }), V(() => {
       document.body.removeEventListener("click", f);
     });
-    const b = (l) => {
-      s("menuClick", l);
+    const b = (c) => {
+      s("menuClick", c);
     };
-    return (l, x) => {
+    return (c, x) => {
       const d = z("el-icon");
       return n(), t("div", {
         class: "vue-diy-rightmenu-plus",
         onContextmenu: D(L, ["prevent"])
       }, [
-        N(l.$slots, "default"),
+        N(c.$slots, "default"),
         r.value ? (n(), t("div", {
           key: 0,
           class: "menu-content",
@@ -76,10 +76,10 @@ const A = ["onContextmenu"], P = {
           a.list.length > 0 ? (n(), t("div", P, [
             (n(!0), t(v, null, C(a.list, (o, h) => (n(), t("div", {
               class: "item",
-              onClick: (c) => b(o[e.value.value]),
+              onClick: (l) => b(o[e.value.value]),
               key: h
             }, [
-              o[e.value.icon] && o[e.value.icon].icon ? (n(), t(v, { key: 0 }, [
+              o[e.value.icon] && (o[e.value.icon].icon || o[e.value.icon].type) ? (n(), t(v, { key: 0 }, [
                 o[e.value.icon].type === "custom" ? (n(), u(y(o[e.value.icon].icon), { key: 0 })) : o[e.value.icon].type === "el" ? (n(), u(d, { key: 1 }, {
                   default: S(() => [
                     (n(), u(y(o[e.value.icon].icon)))
@@ -87,10 +87,7 @@ const A = ["onContextmenu"], P = {
                   _: 2
                 }, 1024)) : o[e.value.icon].type === "iconfont" ? (n(), t("i", {
                   key: 2,
-                  class: m([
-                    "icon iconfont",
-                    "icon-" + o[e.value.icon].icon
-                  ])
+                  class: m(["icon iconfont", "icon-" + o[e.value.icon].icon])
                 }, null, 2)) : (n(), t("i", {
                   key: 3,
                   class: m(o[e.value.icon].type)
@@ -103,29 +100,26 @@ const A = ["onContextmenu"], P = {
             key: h
           }, [
             $("p", F, p(o[e.value.name]), 1),
-            (n(!0), t(v, null, C(o[e.value.data], (c, B) => (n(), t("div", {
+            (n(!0), t(v, null, C(o[e.value.data], (l, B) => (n(), t("div", {
               class: "item",
-              onClick: (Y) => b(c[e.value.value]),
+              onClick: (Y) => b(l[e.value.value]),
               key: B
             }, [
-              c[e.value.icon] && c[e.value.icon].icon ? (n(), t(v, { key: 0 }, [
-                c[e.value.icon].type === "custom" ? (n(), u(y(c[e.value.icon].icon), { key: 0 })) : c[e.value.icon].type === "el" ? (n(), u(d, { key: 1 }, {
+              l[e.value.icon] && (l[e.value.icon].icon || l[e.value.icon].type) ? (n(), t(v, { key: 0 }, [
+                l[e.value.icon].type === "custom" ? (n(), u(y(l[e.value.icon].icon), { key: 0 })) : l[e.value.icon].type === "el" ? (n(), u(d, { key: 1 }, {
                   default: S(() => [
-                    (n(), u(y(c[e.value.icon].icon)))
+                    (n(), u(y(l[e.value.icon].icon)))
                   ]),
                   _: 2
-                }, 1024)) : c[e.value.icon].type === "iconfont" ? (n(), t("i", {
+                }, 1024)) : l[e.value.icon].type === "iconfont" ? (n(), t("i", {
                   key: 2,
-                  class: m([
-                    "icon iconfont",
-                    "icon-" + c[e.value.icon].icon
-                  ])
+                  class: m(["icon iconfont", "icon-" + l[e.value.icon].icon])
                 }, null, 2)) : (n(), t("i", {
                   key: 3,
-                  class: m(c[e.value.icon].type)
-                }, p(c[e.value.icon].icon), 3))
+                  class: m(l[e.value.icon].type)
+                }, p(l[e.value.icon].icon), 3))
               ], 64)) : g("", !0),
-              E(" " + p(c[e.value.label]), 1)
+              E(" " + p(l[e.value.label]), 1)
             ], 8, R))), 128))
           ]))), 128))
         ], 4)) : g("", !0)
