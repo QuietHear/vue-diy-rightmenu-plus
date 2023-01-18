@@ -4,7 +4,7 @@
 */
 /*
  * @LastEditors: aFei
- * @LastEditTime: 2023-01-13 17:42:07
+ * @LastEditTime: 2023-01-18 10:48:07
 */
 <template>
   <div class="vue-diy-rightmenu-plus" @contextmenu.prevent="showMenu">
@@ -15,18 +15,18 @@
       <template v-if="list.length > 0">
         <div class="menu-list">
           <div class="item" @click="menuClick(item[nameSet.value])" v-for="(item, index) in list" :key="index">
-            <template v-if="item[nameSet.customIcon] || item[nameSet.icon]">
-              <component :is="item[nameSet.customIcon]" v-if="item[nameSet.customIcon]" />
-              <el-icon v-else-if="item[nameSet.icon].split('/')[0] === 'el'">
-                <component :is="item[nameSet.icon].split('/')[1]" />
+            <template v-if="item[nameSet.icon] && item[nameSet.icon].icon">
+              <component :is="item[nameSet.icon].icon" v-if="item[nameSet.icon].type === 'custom'" />
+              <el-icon v-else-if="item[nameSet.icon].type === 'el'">
+                <component :is="item[nameSet.icon].icon" />
               </el-icon>
               <i :class="[
                 'icon iconfont',
-                'icon-' + item[nameSet.icon].split('/')[1],
-              ]" v-else-if="item[nameSet.icon].split('/')[0] === 'iconfont'" />
-              <i :class="item[nameSet.icon].split('/')[0]" v-else>{{
-                item[nameSet.icon].split("/")[1]
-              }}</i>
+                'icon-' + item[nameSet.icon].icon,
+              ]" v-else-if="item[nameSet.icon].type === 'iconfont'" />
+              <i :class="item[nameSet.icon].type" v-else>
+                {{ item[nameSet.icon].icon }}
+              </i>
             </template>
             {{ item[nameSet.label] }}
           </div>
@@ -38,18 +38,18 @@
           <p class="item-title">{{ item[nameSet.name] }}</p>
           <div class="item" @click="menuClick(one[nameSet.value])" v-for="(one, oneIndex) in item[nameSet.data]"
             :key="oneIndex">
-            <template v-if="one[nameSet.customIcon] || one[nameSet.icon]">
-              <component :is="one[nameSet.customIcon]" v-if="one[nameSet.customIcon]" />
-              <el-icon v-else-if="one[nameSet.icon].split('/')[0] === 'el'">
-                <component :is="one[nameSet.icon].split('/')[1]" />
+            <template v-if="one[nameSet.icon] && one[nameSet.icon].icon">
+              <component :is="one[nameSet.icon].icon" v-if="one[nameSet.icon].type === 'custom'" />
+              <el-icon v-else-if="one[nameSet.icon].type === 'el'">
+                <component :is="one[nameSet.icon].icon" />
               </el-icon>
               <i :class="[
                 'icon iconfont',
-                'icon-' + one[nameSet.icon].split('/')[1],
-              ]" v-else-if="one[nameSet.icon].split('/')[0] === 'iconfont'" />
-              <i :class="one[nameSet.icon].split('/')[0]" v-else>{{
-                one[nameSet.icon].split("/")[1]
-              }}</i>
+                'icon-' + one[nameSet.icon].icon,
+              ]" v-else-if="one[nameSet.icon].type === 'iconfont'" />
+              <i :class="one[nameSet.icon].type" v-else>
+                {{ one[nameSet.icon].icon }}
+              </i>
             </template>
             {{ one[nameSet.label] }}
           </div>
@@ -77,11 +77,11 @@ const props = defineProps({
         {
           label: "编辑",
           value: "编辑value",
-          icon: "el/Apple",
+          icon: { icon: '√' }
         },
         {
           label: "删除",
-          value: "删除value",
+          value: "删除value"
         },
       ];
     },
@@ -109,7 +109,6 @@ const nameSet = ref({
   data: props.props.data || "data",
   label: props.props.label || "label",
   value: props.props.value || "value",
-  customIcon: props.props.customIcon || "customIcon",
   icon: props.props.icon || "icon"
 });
 // 查找最近的一个符合条件的元素

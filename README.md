@@ -28,7 +28,7 @@
 		{
 			name:'a',
 			data:[
-				{label:'编辑',value:'编辑value',icon:'el/Apple'}
+				{label:'编辑',value:'编辑value',icon:{type:'el',icon:'Apple'}}
 			]
 		}
 	]
@@ -41,11 +41,16 @@
         {
           label: "编辑",
           value: "编辑value",
-          icon: "el/Apple",
+          icon: { icon: '√' }
+		  // type的值，有以下四种情况：
+		  // custom，此时为自定义组件,icon为组件对象
+		  // el，此时为el-icon,icon为图标组件名（！！！未内置）
+		  // iconfont，此时为iconfont，icon为图标去掉icon-后部分（！！！未内置）
+		  // 其他，此时为本地自定义图标，type为class，icon为内容
         },
         {
           label: "删除",
-          value: "删除value",
+          value: "删除value"
         },
 	]
 >
@@ -57,13 +62,7 @@
 	data:'data' // 按钮组数据
 	label:'label' // 按钮的内容
 	value:'value' // 点击按钮的返回值
-	customIcon:'customIcon' // 自定义组件，优先级高于icon
 	icon:'icon' // 点击按钮图标
-	//
-	// 按钮名分为前后两部分，用/分隔，有以下三种情况
-	// el/xxx，此时为el-icon,xxx为图标组件名（！！！未内置）
-	// iconfont/xxx，此时为iconfont，xxx为图标去掉icon-后部分（！！！未内置）
-	// xx/xx，此时为本地自定义图标，前半部分为class，后半部分为内容
 >
 
 * `hideOnClick`：点击按钮后是否隐藏弹窗-->Boolean;非必传;默认*true*
