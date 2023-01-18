@@ -4,7 +4,7 @@
 */
 /*
  * @LastEditors: aFei
- * @LastEditTime: 2023-01-18 11:10:53
+ * @LastEditTime: 2023-01-18 17:17:46
 */
 <template>
   <div class="vue-diy-rightmenu-plus" @contextmenu.prevent="showMenu">
@@ -16,13 +16,13 @@
         <div class="menu-list">
           <div class="item" @click="menuClick(item[nameSet.value])" v-for="(item, index) in list" :key="index">
             <template v-if="item[nameSet.icon] && (item[nameSet.icon].icon || item[nameSet.icon].type)">
-              <component :is="item[nameSet.icon].icon" v-if="item[nameSet.icon].type === 'custom'" />
-              <el-icon v-else-if="item[nameSet.icon].type === 'el'">
+              <component :is="item[nameSet.icon].icon" v-bind="item[nameSet.icon].attrs" v-if="item[nameSet.icon].type === 'custom'" />
+              <el-icon v-bind="item[nameSet.icon].attrs" v-else-if="item[nameSet.icon].type === 'el'">
                 <component :is="item[nameSet.icon].icon" />
               </el-icon>
-              <i :class="['icon iconfont', 'icon-' + item[nameSet.icon].icon]"
+              <i :class="['icon iconfont', 'icon-' + item[nameSet.icon].icon]" v-bind="item[nameSet.icon].attrs"
                 v-else-if="item[nameSet.icon].type === 'iconfont'" />
-              <i :class="item[nameSet.icon].type" v-else>
+              <i :class="item[nameSet.icon].type" v-bind="item[nameSet.icon].attrs" v-else>
                 {{ item[nameSet.icon].icon }}
               </i>
             </template>
@@ -37,13 +37,14 @@
           <div class="item" @click="menuClick(one[nameSet.value])" v-for="(one, oneIndex) in item[nameSet.data]"
             :key="oneIndex">
             <template v-if="one[nameSet.icon] && (one[nameSet.icon].icon || one[nameSet.icon].type)">
-              <component :is="one[nameSet.icon].icon" v-if="one[nameSet.icon].type === 'custom'" />
-              <el-icon v-else-if="one[nameSet.icon].type === 'el'">
+              <component :is="one[nameSet.icon].icon" v-bind="one[nameSet.icon].attrs"
+                v-if="one[nameSet.icon].type === 'custom'" />
+              <el-icon v-bind="one[nameSet.icon].attrs" v-else-if="one[nameSet.icon].type === 'el'">
                 <component :is="one[nameSet.icon].icon" />
               </el-icon>
-              <i :class="['icon iconfont', 'icon-' + one[nameSet.icon].icon]"
+              <i :class="['icon iconfont', 'icon-' + one[nameSet.icon].icon]" v-bind="one[nameSet.icon].attrs"
                 v-else-if="one[nameSet.icon].type === 'iconfont'" />
-              <i :class="one[nameSet.icon].type" v-else>
+              <i :class="one[nameSet.icon].type" v-bind="one[nameSet.icon].attrs" v-else>
                 {{ one[nameSet.icon].icon }}
               </i>
             </template>

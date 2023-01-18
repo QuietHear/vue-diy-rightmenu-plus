@@ -1,8 +1,8 @@
-import { ref as _, watch as M, onBeforeUnmount as V, resolveComponent as z, openBlock as n, createElementBlock as t, withModifiers as D, renderSlot as N, normalizeStyle as O, Fragment as v, renderList as C, createBlock as u, resolveDynamicComponent as y, withCtx as S, normalizeClass as m, toDisplayString as p, createCommentVNode as g, createTextVNode as E, createElementVNode as $ } from "vue";
-const A = ["onContextmenu"], P = {
+import { ref as g, watch as V, onBeforeUnmount as P, resolveComponent as z, openBlock as n, createElementBlock as l, withModifiers as D, renderSlot as N, normalizeStyle as O, Fragment as p, renderList as C, createBlock as s, resolveDynamicComponent as m, normalizeProps as k, mergeProps as a, withCtx as E, toDisplayString as d, createCommentVNode as w, createTextVNode as L, createElementVNode as $ } from "vue";
+const A = ["onContextmenu"], j = {
   key: 0,
   class: "menu-list"
-}, j = ["onClick"], F = { class: "item-title" }, R = ["onClick"], T = {
+}, F = ["onClick"], R = { class: "item-title" }, T = ["onClick"], U = {
   __name: "index",
   props: {
     groupList: {
@@ -33,107 +33,107 @@ const A = ["onContextmenu"], P = {
     }
   },
   emits: ["menuClick", "popShow", "popClose"],
-  setup(a, { emit: s }) {
-    const i = a, r = _(!1), k = _({
+  setup(u, { emit: r }) {
+    const i = u, v = g(!1), f = g({
       left: "9999px",
       top: "9999px"
-    }), e = _({
+    }), e = g({
       name: i.props.name || "name",
       data: i.props.data || "data",
       label: i.props.label || "label",
       value: i.props.value || "value",
       icon: i.props.icon || "icon"
-    }), w = (c, x) => {
-      let d = c.matches || c.webkitMatchesSelector || c.mozMatchesSelector || c.msMatchesSelector;
-      for (; c && !d.call(c, x); )
+    }), b = (c, S) => {
+      let y = c.matches || c.webkitMatchesSelector || c.mozMatchesSelector || c.msMatchesSelector;
+      for (; c && !y.call(c, S); )
         c = c.parentElement;
       return c;
-    }, L = () => {
-      w(event.target, ".menu-content") === null && (k.value.left = event.clientX + "px", k.value.top = event.clientY + "px", r.value = !0, s("popShow"));
-    }, f = () => {
-      (i.hideOnClick || w(event.target, ".menu-content") === null) && (r.value = !1, s("popClose"));
+    }, B = () => {
+      b(event.target, ".menu-content") === null && (f.value.left = event.clientX + "px", f.value.top = event.clientY + "px", v.value = !0, r("popShow"));
+    }, h = () => {
+      (i.hideOnClick || b(event.target, ".menu-content") === null) && (v.value = !1, r("popClose"));
     };
-    M(r, () => {
-      r.value ? document.body.addEventListener("click", f) : document.body.removeEventListener("click", f);
-    }), V(() => {
-      document.body.removeEventListener("click", f);
+    V(v, () => {
+      v.value ? document.body.addEventListener("click", h) : document.body.removeEventListener("click", h);
+    }), P(() => {
+      document.body.removeEventListener("click", h);
     });
-    const b = (c) => {
-      s("menuClick", c);
+    const x = (c) => {
+      r("menuClick", c);
     };
-    return (c, x) => {
-      const d = z("el-icon");
-      return n(), t("div", {
+    return (c, S) => {
+      const y = z("el-icon");
+      return n(), l("div", {
         class: "vue-diy-rightmenu-plus",
-        onContextmenu: D(L, ["prevent"])
+        onContextmenu: D(B, ["prevent"])
       }, [
         N(c.$slots, "default"),
-        r.value ? (n(), t("div", {
+        v.value ? (n(), l("div", {
           key: 0,
           class: "menu-content",
-          style: O(k.value)
+          style: O(f.value)
         }, [
-          a.list.length > 0 ? (n(), t("div", P, [
-            (n(!0), t(v, null, C(a.list, (o, h) => (n(), t("div", {
+          u.list.length > 0 ? (n(), l("div", j, [
+            (n(!0), l(p, null, C(u.list, (o, _) => (n(), l("div", {
               class: "item",
-              onClick: (l) => b(o[e.value.value]),
-              key: h
+              onClick: (t) => x(o[e.value.value]),
+              key: _
             }, [
-              o[e.value.icon] && (o[e.value.icon].icon || o[e.value.icon].type) ? (n(), t(v, { key: 0 }, [
-                o[e.value.icon].type === "custom" ? (n(), u(y(o[e.value.icon].icon), { key: 0 })) : o[e.value.icon].type === "el" ? (n(), u(d, { key: 1 }, {
-                  default: S(() => [
-                    (n(), u(y(o[e.value.icon].icon)))
+              o[e.value.icon] && (o[e.value.icon].icon || o[e.value.icon].type) ? (n(), l(p, { key: 0 }, [
+                o[e.value.icon].type === "custom" ? (n(), s(m(o[e.value.icon].icon), k(a({ key: 0 }, o[e.value.icon].attrs)), null, 16)) : o[e.value.icon].type === "el" ? (n(), s(y, k(a({ key: 1 }, o[e.value.icon].attrs)), {
+                  default: E(() => [
+                    (n(), s(m(o[e.value.icon].icon)))
                   ]),
                   _: 2
-                }, 1024)) : o[e.value.icon].type === "iconfont" ? (n(), t("i", {
+                }, 1040)) : o[e.value.icon].type === "iconfont" ? (n(), l("i", a({
                   key: 2,
-                  class: m(["icon iconfont", "icon-" + o[e.value.icon].icon])
-                }, null, 2)) : (n(), t("i", {
+                  class: ["icon iconfont", "icon-" + o[e.value.icon].icon]
+                }, o[e.value.icon].attrs), null, 16)) : (n(), l("i", a({
                   key: 3,
-                  class: m(o[e.value.icon].type)
-                }, p(o[e.value.icon].icon), 3))
-              ], 64)) : g("", !0),
-              E(" " + p(o[e.value.label]), 1)
-            ], 8, j))), 128))
-          ])) : (n(!0), t(v, { key: 1 }, C(a.groupList, (o, h) => (n(), t("div", {
+                  class: o[e.value.icon].type
+                }, o[e.value.icon].attrs), d(o[e.value.icon].icon), 17))
+              ], 64)) : w("", !0),
+              L(" " + d(o[e.value.label]), 1)
+            ], 8, F))), 128))
+          ])) : (n(!0), l(p, { key: 1 }, C(u.groupList, (o, _) => (n(), l("div", {
             class: "menu-group-list",
-            key: h
+            key: _
           }, [
-            $("p", F, p(o[e.value.name]), 1),
-            (n(!0), t(v, null, C(o[e.value.data], (l, B) => (n(), t("div", {
+            $("p", R, d(o[e.value.name]), 1),
+            (n(!0), l(p, null, C(o[e.value.data], (t, M) => (n(), l("div", {
               class: "item",
-              onClick: (Y) => b(l[e.value.value]),
-              key: B
+              onClick: (q) => x(t[e.value.value]),
+              key: M
             }, [
-              l[e.value.icon] && (l[e.value.icon].icon || l[e.value.icon].type) ? (n(), t(v, { key: 0 }, [
-                l[e.value.icon].type === "custom" ? (n(), u(y(l[e.value.icon].icon), { key: 0 })) : l[e.value.icon].type === "el" ? (n(), u(d, { key: 1 }, {
-                  default: S(() => [
-                    (n(), u(y(l[e.value.icon].icon)))
+              t[e.value.icon] && (t[e.value.icon].icon || t[e.value.icon].type) ? (n(), l(p, { key: 0 }, [
+                t[e.value.icon].type === "custom" ? (n(), s(m(t[e.value.icon].icon), k(a({ key: 0 }, t[e.value.icon].attrs)), null, 16)) : t[e.value.icon].type === "el" ? (n(), s(y, k(a({ key: 1 }, t[e.value.icon].attrs)), {
+                  default: E(() => [
+                    (n(), s(m(t[e.value.icon].icon)))
                   ]),
                   _: 2
-                }, 1024)) : l[e.value.icon].type === "iconfont" ? (n(), t("i", {
+                }, 1040)) : t[e.value.icon].type === "iconfont" ? (n(), l("i", a({
                   key: 2,
-                  class: m(["icon iconfont", "icon-" + l[e.value.icon].icon])
-                }, null, 2)) : (n(), t("i", {
+                  class: ["icon iconfont", "icon-" + t[e.value.icon].icon]
+                }, t[e.value.icon].attrs), null, 16)) : (n(), l("i", a({
                   key: 3,
-                  class: m(l[e.value.icon].type)
-                }, p(l[e.value.icon].icon), 3))
-              ], 64)) : g("", !0),
-              E(" " + p(l[e.value.label]), 1)
-            ], 8, R))), 128))
+                  class: t[e.value.icon].type
+                }, t[e.value.icon].attrs), d(t[e.value.icon].icon), 17))
+              ], 64)) : w("", !0),
+              L(" " + d(t[e.value.label]), 1)
+            ], 8, T))), 128))
           ]))), 128))
-        ], 4)) : g("", !0)
+        ], 4)) : w("", !0)
       ], 40, A);
     };
   }
-}, U = [T], X = {
-  install(a) {
-    U.forEach((s) => {
-      a.component("vueDiyRightmenuPlus", s);
+}, X = [U], Y = {
+  install(u) {
+    X.forEach((r) => {
+      u.component("vueDiyRightmenuPlus", r);
     });
   }
 };
-typeof window < "u" && window.Vue && window.Vue.use(X);
+typeof window < "u" && window.Vue && window.Vue.use(Y);
 export {
-  X as default
+  Y as default
 };
