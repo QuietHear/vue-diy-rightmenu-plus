@@ -4,7 +4,7 @@
 */
 /*
  * @LastEditors: aFei
- * @LastEditTime: 2023-01-18 17:17:46
+ * @LastEditTime: 2023-02-20 14:28:59
 */
 <template>
   <div class="vue-diy-rightmenu-plus" @contextmenu.prevent="showMenu">
@@ -56,7 +56,6 @@
   </div>
 </template>
 <script setup>
-import { onBeforeUnmount, watch, ref } from "vue";
 const emit = defineEmits(["menuClick", "popShow", "popClose"]);
 const props = defineProps({
   // 按钮组数据
