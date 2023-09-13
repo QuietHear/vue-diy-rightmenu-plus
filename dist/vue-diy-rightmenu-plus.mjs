@@ -79,7 +79,7 @@ const A = ["onContextmenu"], q = {
         c = c.parentElement;
       return c;
     }, L = () => {
-      j(event.target, ".menu-content") === null && (v.value.left = event.clientX + "px", v.value.top = event.clientY + "px", a.value = !0, r("popShow"));
+      j(event.target, ".menu-content") === null && (document.body.click(), v.value.left = event.clientX + "px", v.value.top = event.clientY + "px", a.value = !0, r("popShow"));
     }, y = () => {
       (s.hideOnClick || j(event.target, ".menu-content") === null) && (a.value = !1, r("popClose"));
     };

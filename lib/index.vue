@@ -4,7 +4,7 @@
 */
 /*
  * @LastEditors: aFei
- * @LastEditTime: 2023-06-29 17:15:49
+ * @LastEditTime: 2023-09-13 16:07:54
 */
 <template>
   <div class="vue-diy-rightmenu-plus" @contextmenu.prevent="showMenu">
@@ -15,7 +15,8 @@
       <template v-if="list.length > 0">
         <div class="menu-list">
           <div class="item" @click="menuClick(item[nameSet.value])" v-for="(item, index) in list" :key="index">
-            <Icon :iconObj="item[nameSet.icon]" v-if="item[nameSet.icon] && (item[nameSet.icon].icon || item[nameSet.icon].type)" />
+            <Icon :iconObj="item[nameSet.icon]"
+              v-if="item[nameSet.icon] && (item[nameSet.icon].icon || item[nameSet.icon].type)" />
             {{ item[nameSet.label] }}
           </div>
         </div>
@@ -26,7 +27,8 @@
           <p class="item-title">{{ item[nameSet.name] }}</p>
           <div class="item" @click="menuClick(one[nameSet.value])" v-for="(one, oneIndex) in item[nameSet.data]"
             :key="oneIndex">
-            <Icon :iconObj="one[nameSet.icon]" v-if="one[nameSet.icon] && (one[nameSet.icon].icon || one[nameSet.icon].type)" />
+            <Icon :iconObj="one[nameSet.icon]"
+              v-if="one[nameSet.icon] && (one[nameSet.icon].icon || one[nameSet.icon].type)" />
             {{ one[nameSet.label] }}
           </div>
         </div>
@@ -106,6 +108,7 @@ const closest = (ele, selector) => {
 const showMenu = () => {
   console.log(event, 1111);
   if (closest(event.target, ".menu-content") === null) {
+    document.body.click();
     console.log("未点击在弹窗上");
     popStyle.value.left = event.clientX + "px";
     popStyle.value.top = event.clientY + "px";
