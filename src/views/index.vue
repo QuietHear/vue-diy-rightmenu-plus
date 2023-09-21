@@ -4,17 +4,19 @@
 */
 /*
  * @LastEditors: aFei
- * @LastEditTime: 2023-09-21 13:18:39
+ * @LastEditTime: 2023-09-21 17:20:12
 */
 <template>
   <div class="demo">
-    <vue-diy-rightmenu-plus @menuClick="menuClick">
-      <p style="background: purple;color: #fff;">触发区域1</p>
-    </vue-diy-rightmenu-plus>
-    <p>间隔</p>
-    <vue-diy-rightmenu-plus :list="btnList" @menuClick="menuClick">
-      <p style="background: purple;color: #fff;">触发区域2</p>
-    </vue-diy-rightmenu-plus>
+    <el-scrollbar>
+      <vue-diy-rightmenu-plus @menuClick="menuClick">
+        <p style="background: purple;color: #fff;">触发区域1</p>
+      </vue-diy-rightmenu-plus>
+      <p>间隔</p>
+      <vue-diy-rightmenu-plus :list="btnList" @menuClick="menuClick">
+        <p style="background: purple;color: #fff;">触发区域2</p>
+      </vue-diy-rightmenu-plus>
+    </el-scrollbar>
   </div>
 </template>
 <script setup>
