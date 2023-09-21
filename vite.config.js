@@ -4,7 +4,7 @@
 */
 /*
  * @LastEditors: aFei
- * @LastEditTime: 2023-09-20 14:48:19
+ * @LastEditTime: 2023-09-21 13:25:33
 */
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
@@ -34,7 +34,7 @@ export default defineConfig(({ command, mode }) => ({
       fileName: "vue-diy-rightmenu-plus",
     },
     rollupOptions: {
-      external: ["vue", "vue-router"],
+      external: ["vue", "vue-router", "element-plus"],
       output: {
         globals: {
           vue: "Vue",
