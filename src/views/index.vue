@@ -4,17 +4,17 @@
 */
 /*
  * @LastEditors: aFei
- * @LastEditTime: 2023-09-21 10:47:49
+ * @LastEditTime: 2023-09-21 13:18:39
 */
 <template>
   <div class="demo">
-    <vueDiyRightmenuPlus @menuClick="menuClick">
+    <vue-diy-rightmenu-plus @menuClick="menuClick">
       <p style="background: purple;color: #fff;">触发区域1</p>
-    </vueDiyRightmenuPlus>
+    </vue-diy-rightmenu-plus>
     <p>间隔</p>
-    <vueDiyRightmenuPlus :list="btnList" @menuClick="menuClick">
+    <vue-diy-rightmenu-plus :list="btnList" @menuClick="menuClick">
       <p style="background: purple;color: #fff;">触发区域2</p>
-    </vueDiyRightmenuPlus>
+    </vue-diy-rightmenu-plus>
   </div>
 </template>
 <script setup>
